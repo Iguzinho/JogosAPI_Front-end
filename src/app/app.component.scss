@@ -1,0 +1,24 @@
+header {
+  background-color: #1e88e5;
+  color: white;
+  padding: 1rem;
+
+  h1 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  nav a {
+    margin-right: 1rem;
+    color: white;
+    text-decoration: none;
+
+    &.ativo {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
+
+main {
+  padding: 2rem;
+}
