@@ -1,6 +1,6 @@
-<h2>Incluir Novo Jogo</h2>
+<h2>Editar Jogo</h2>
 
-<form (ngSubmit)="salvar()">
+<form *ngIf="jogo" (ngSubmit)="salvar()">
   <label>
     Título:
     <input type="text" [(ngModel)]="jogo.titulo" name="titulo" required />
@@ -36,7 +36,7 @@
     <input type="text" [(ngModel)]="jogo.classificacaoEtaria" name="classificacaoEtaria" required />
   </label>
 
-  <button type="submit">Salvar</button>
+  <button type="submit">Salvar Alterações</button>
 </form>
 
 <button routerLink="/">Voltar</button>
