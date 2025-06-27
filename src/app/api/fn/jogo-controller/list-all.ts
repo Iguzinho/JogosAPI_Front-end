@@ -19,7 +19,7 @@ export function listAll(http: HttpClient, rootUrl: string, params?: ListAll$Para
   }
 
   return http.request(
-    rb.build({ responseType: 'blob', accept: '*/*', context })
+    rb.build({ responseType: 'json', accept: 'application/json', context }) // Alterado de 'blob' para 'json' e 'accept' para 'application/json'
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {

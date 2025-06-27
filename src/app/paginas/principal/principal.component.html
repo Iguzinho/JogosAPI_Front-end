@@ -1,32 +1,43 @@
-<h2>Lista de Jogos</h2>
+<h2>Jogos Cadastrados</h2>
 
-<table>
-  <thead>
-  <tr>
-    <th>Título</th>
-    <th>Gênero</th>
-    <th>Plataforma</th>
-    <th>Desenvolvedora</th>
-    <th>Data de Lançamento</th>
-    <th>Multiplayer</th>
-    <th>Classificação Etária</th>
-    <th>Ações</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let jogo of jogos">
-    <td>{{ jogo.titulo }}</td>
-    <td>{{ jogo.genero }}</td>
-    <td>{{ jogo.plataforma }}</td>
-    <td>{{ jogo.desenvolvedora }}</td>
-    <td>{{ jogo.dataLancamento }}</td>
-    <td>{{ jogo.multiplayer ? 'Sim' : 'Não' }}</td>
-    <td>{{ jogo.classificacaoEtaria }}</td>
-    <td>
-      <button [routerLink]="['/editar-jogo', jogo.id]">Editar</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div *ngIf="errorMessage" class="error-message">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="jogos.length === 0 && !errorMessage; else listaDeJogos" class="mensagem-sem-jogos">
+  <p>Nenhum jogo cadastrado ainda. <a routerLink="/incluir-jogo">Clique aqui para adicionar um!</a></p>
+</div>
+
+<ng-template #listaDeJogos>
+  <table>
+    <thead>
+    <tr>
+      <th>Título</th>
+      <th>Gênero</th>
+      <th>Plataforma</th>
+      <th>Desenvolvedora</th>
+      <th>Lançamento</th>
+      <th>Multiplayer</th>
+      <th>Classificação</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let jogo of jogos">
+      <td>{{ jogo.titulo }}</td>
+      <td>{{ jogo.genero }}</td>
+      <td>{{ jogo.plataforma }}</td>
+      <td>{{ jogo.desenvolvedora }}</td>
+      <td>{{ jogo.dataLancamento | date:'dd/MM/yyyy' }}</td>
+      <td>{{ jogo.multiplayer ? 'Sim' : 'Não' }}</td>
+      <td>{{ jogo.classificacaoEtaria }}</td>
+      <td>
+        <button [routerLink]="['/editar-jogo', jogo.id]" class="btn-editar">Editar</button>
+        <button (click)="excluirJogo(jogo.id!)" class="btn-excluir">Excluir</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
 
 <button routerLink="/incluir-jogo">Incluir Novo Jogo</button>

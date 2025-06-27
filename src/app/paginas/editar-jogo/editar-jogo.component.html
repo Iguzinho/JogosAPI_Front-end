@@ -1,6 +1,15 @@
 <h2>Editar Jogo</h2>
 
-<form *ngIf="jogo" (ngSubmit)="salvar()">
+<div *ngIf="errorMessage" class="error-message">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="!jogoId">
+  <p>ID do jogo não fornecido.</p>
+  <button routerLink="/">Voltar</button>
+</div>
+
+<form *ngIf="jogoId && jogo" (ngSubmit)="salvar()">
   <label>
     Título:
     <input type="text" [(ngModel)]="jogo.titulo" name="titulo" required />
