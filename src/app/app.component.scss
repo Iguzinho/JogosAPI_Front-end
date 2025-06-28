@@ -1,7 +1,10 @@
 header {
-  background-color: #1e88e5;
-  color: white;
+  background-color: rgb(175, 0, 191);
+  color: #ffffff;
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   h1 {
     margin: 0 0 0.5rem 0;
@@ -9,11 +12,12 @@ header {
 
   nav a {
     margin-right: 1rem;
-    color: white;
+    color: #ffffff;
     text-decoration: none;
-
+    font-size: 20px;
     &.ativo {
       font-weight: bold;
+      color: #ffffff;
       text-decoration: underline;
     }
   }
